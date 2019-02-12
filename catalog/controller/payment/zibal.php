@@ -4,7 +4,6 @@
 		public function index() {
 			$this->load->language('payment/zibal');
 			$this->load->model('checkout/order');
-			$this->load->library('encryption');
 
 			$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 
@@ -68,7 +67,6 @@
 		public function callback() {
 			$this->load->language('payment/zibal');
 			$this->load->model('checkout/order');
-			$this->load->library('encryption');
 
 			$this->document->setTitle($this->language->get('heading_title'));
 

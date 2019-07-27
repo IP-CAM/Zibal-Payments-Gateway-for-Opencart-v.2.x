@@ -83,9 +83,9 @@
 
 			$data['continue'] = $this->url->link('checkout/cart', '', 'SSL');
 			$merchant = $this->config->get('zibal_merchant');
-			if ($this->request->post['orderId'] && $this->request->post['trackId']) {
-				if ($this->request->post['success'] == "1") {
-					$trackId = $_POST['trackId'];
+			if ($this->request->get['orderId'] && $this->request->get['trackId']) {
+				if ($this->request->get['success'] == "1") {
+					$trackId = $this->request->get['trackId'];
 					//verify payment
 					$parameters = array(
 							'trackId' => $trackId,
@@ -168,7 +168,7 @@
 
 		private function post_to_zibal($url, $data = false) {
 			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, "https://gateway.zibal.ir/".$url);
+			curl_setopt($ch, CURLOPT_URL, "https://gateway.zibal.ir/v1/".$url);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json; charset=utf-8'));
 			curl_setopt($ch, CURLOPT_POST, 1);
 			if ($data) {
@@ -197,3 +197,5 @@
 	}
 
 ?>
+
+
